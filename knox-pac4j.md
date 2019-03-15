@@ -58,7 +58,7 @@
       </param>>
           </service>
       </topology>
-      ```
+```
 
 Ref: https://community.hortonworks.com/articles/171892/configure-knox-with-openid-connect.html
 Ref: https://knox.apache.org/books/knox-0-12-0/user-guide.html#Pac4j+Provider+-+CAS+/+OAuth+/+SAML+/+OpenID+Connect
