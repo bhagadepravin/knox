@@ -54,8 +54,12 @@
               </param>
        <param>
          <name>knoxsso.redirect.whitelist.regex</name>
-         <value>^/.*$;^https?://(.+\.squadron-labs\.com|c174\-node1\.squadron\-labs\.com|c174\-node2\.squadron\-labs\.com|172.25.34.144|172.25.39.14|172.25.39.131|172.25.38.136):[0-9]+/?.*$</value>
+         <value>^/.*$;^https?://(.+\.squadron-labs\.com|):[0-9]+/?.*$</value>
       </param>>
           </service>
       </topology>
       ```
+
+Ref: https://community.hortonworks.com/articles/171892/configure-knox-with-openid-connect.html
+Ref: https://knox.apache.org/books/knox-0-12-0/user-guide.html#Pac4j+Provider+-+CAS+/+OAuth+/+SAML+/+OpenID+Connect
+Ref: https://knox.apache.org/books/knox-0-12-0/user-guide.html#For+OpenID+Connect+support:
