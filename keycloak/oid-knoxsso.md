@@ -1,0 +1,79 @@
+use oid.xml like knoxsso.xml
+
+```xml
+<topology>
+          <gateway>
+        <provider>
+                  <role>webappsec</role>
+                  <name>WebAppSec</name>
+                  <enabled>true</enabled>
+                  <param><name>xframe.options.enabled</name><value>true</value></param>
+              </provider>
+              <provider>
+                  <role>federation</role>
+                  <name>pac4j</name>
+                  <enabled>true</enabled>
+                  <param>
+                    <name>pac4j.callbackUrl</name>
+                    <value>https://c474-node2.squadron.support.hortonworks.com:8443/gateway/oid/api/v1/websso</value>;
+                  </param>
+                  <param>
+                    <name>clientName</name>
+                    <value>OidcClient</value>
+                  </param>
+                  <param>
+                    <name>oidc.id</name>
+                    <value>knox-oid</value>
+                  </param>
+                  <param>
+                    <name>oidc.secret</name>
+                    <value>9abd0327-1694-47a8-941e-e29f16582488</value>
+                  </param>
+                  <param>
+                    <name>oidc.discoveryUri</name>
+                    <value>http://172.26.88.239:8080/auth/realms/master/.well-known/openid-configuration</value>;
+                  </param>
+                  <param>
+                    <name>oidc.preferredJwsAlgorithm</name>
+                    <value>RS256</value>
+                  </param>
+                  <param>
+                    <name>oidc.clientAuthenticationMethod</name>
+                    <value>client_secret_basic</value>
+                  </param>
+                  <param>
+                  <name>pac4j.id_attribute</name>
+                  <value>preferred_username</value>
+                   </param>
+              </provider>
+              <provider>
+                  <role>identity-assertion</role>
+                  <name>Default</name>
+                  <enabled>true</enabled>
+              </provider>
+
+          </gateway>
+
+          <application>
+            <name>knoxauth</name>
+          </application>
+
+          <service>
+              <role>KNOXSSO</role>
+              <param>
+                  <name>knoxsso.cookie.secure.only</name>
+                  <value>false</value>
+              </param>
+              <param>
+                  <name>knoxsso.token.ttl</name>
+                  <value>3600000</value>
+              </param>
+              <param>
+                 <name>knoxsso.redirect.whitelist.regex</name>
+                 <value>^https?:\/\/(localhost|.*.squadron\.support\.hortonworks\.com|127\.0\.0\.1|0:0:0:0:0:0:0:1|::1):[0-
+9].*$</value>
+              </param>
+          </service>
+
+      </topology>
+```
