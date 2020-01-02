@@ -1,0 +1,87 @@
+```xml
+<topology>
+
+   <gateway>
+     <provider>
+      <role>identity-assertion</role>
+      <name>Default</name>
+      <enabled>true</enabled>
+     </provider>
+
+     <provider>
+       <role>authorization</role>
+       <name>AclsAuthz</name>
+       <enabled>true</enabled>
+     </provider>
+<provider>
+    <role>ha</role>
+    <name>HaProvider</name>
+    <enabled>true</enabled>
+    <param>
+      <name>YARNUI</name>
+      <value>maxFailoverAttempts=3;failoverSleep=1000;maxRetryAttempts=300;retrySleep=1000;enabled=true</value>
+    </param>
+<param>
+<name>HBASE</name>
+<value>maxFailoverAttempts=3;failoverSleep=1000;maxRetryAttempts=300;retrySleep=1000;enabled=true</value>
+</param>
+  </provider>
+     <provider>
+       <role>federation</role>
+       <name>JWTProvider</name>
+       <enabled>true</enabled>
+<param>
+        <name>knox.token.verification.pem</name>
+        <value>
+MIICgDCCAemgAwIBAgIJAL00hlyjWi2eMA0GCSqGSIb3DQEBBQUAMIGBMQswCQYD
+VQQGEwJVUzENMAsGA1UECBMEVGVzdDENMAsGA1UEBxMEVGVzdDEPMA0GA1UEChMG
+SGFkb29wMQ0wCwYDVQQLEwRUZXN0MTQwMgYDVQQDEytjMTg2LW5vZGU0LnNxdWFk
+cm9uLnN1cHBvcnQuaG9ydG9ud29ya3MuY29tMB4XDTE5MTIxOTA5MTcxNFoXDTIw
+MTIxODA5MTcxNFowgYExCzAJBgNVBAYTAlVTMQ0wCwYDVQQIEwRUZXN0MQ0wCwYD
+VQQHEwRUZXN0MQ8wDQYDVQQKEwZIYWRvb3AxDTALBgNVBAsTBFRlc3QxNDAyBgNV
+BAMTK2MxODYtbm9kZTQuc3F1YWRyb24uc3VwcG9ydC5ob3J0b253b3Jrcy5jb20w
+gZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBAKjvxWfZWLUL6DTLq3P2t5XZhLcp
+FGNQt8vAgRcGO9I29tgSkKwCU0aYS5OI/vLamsP06NOr3lxQUdVlSPFBC4CGOpvw
+VSn+5SZ12vGC/YjLMYrSmc9U5dxsj37Ss57ovs0w7KJlct8TNXnli5nymiijYTfb
+P8NqaYUm/+8gMAyHAgMBAAEwDQYJKoZIhvcNAQEFBQADgYEAenjLxZKCc7wttrSV
+OkUCIZRy3JAbJLnqjpLcdoHJXX4cZJjFiMY66mvCmB7jJiAmEOIwI/kkB89ZN//t
+2RsiVMV2plGMscjYEubcCZ3/flZ0mBSqbBXCzGu4mpnBXpqSZAV3IqhJ12GRO3qe
+VgKaDTP78sClxAh0eIBA7NFDPcs=
+   </value>
+      </param>
+      <param>
+       <!-- knox.token.audiences is optional -->
+       <name>knox.token.audiences</name>
+       <value>tokenbased</value>
+      </param>
+     </provider>
+   </gateway>
+
+   <!-- Add Hadoop Services allowed jwt access, here use Yarn UI as an example -->
+<service>
+                <role>RESOURCEMANAGER</role>
+                <url>http://{{rm_host}}:{{rm_port}}/ws</url>
+            </service>
+<service>
+<role>YARNUI</role>
+<url>http://c186-node2.squadron.support.hortonworks.com:8088</url>
+<url>http://c186-node3.squadron.support.hortonworks.com:8088</url>
+</service>
+<service>
+<role>YARN</role>
+<url>http://c186-node2.squadron.support.hortonworks.com:8088</url>
+<url>http://c186-node3.squadron.support.hortonworks.com:8088</url>
+</service>
+
+<service>
+                <role>HBASEUI</role>
+                <url>http://c186-node3.squadron.support.hortonworks.com:16010</url>
+<url>http://c186-node2.squadron.support.hortonworks.com:16010</url>
+            </service>
+<service>
+                <role>WEBHBASE</role>
+                <url>http://c186-node4.squadron.support.hortonworks.com:60080</url>
+            </service>
+</topology>
+
+```
