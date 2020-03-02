@@ -150,4 +150,4 @@
 
  `curl -ivk -H "Authorization: Bearer <token string>" https://<knox host>:8443/gateway/<topology name>/<service>`
 
-Ex:  `url -ivk -H "Authorization: Bearer <token string>" https://<knox host>:8443/gateway/jwt/webhdfs/v1/tmp?op=LISTSTATUS`
+Ex:`curl -ivk -H "Authorization: Bearer <token string>" https://<knox host>:8443/gateway/jwt/webhdfs/v1/tmp?op=LISTSTATUS`
