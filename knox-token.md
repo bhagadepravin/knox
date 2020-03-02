@@ -41,7 +41,7 @@
 ```
 
 
-2. Replace below lines in knox sso topology  <Service> property (file knoxsso-jwt.xml)
+2. Create knoxsso-jwt.xml
   
 ```xml
             <topology>
@@ -144,7 +144,7 @@
 ```
 3.  Use the below url to generate Jwt token
 
- `curl -ivku <username>:<password> https://{KNOX_HOST}:8443/gateway/knoxsso/knoxtoken/api/v1/token`
+ `curl -ivku <username>:<password> https://{KNOX_HOST}:8443/gateway/knoxsso-jwt/knoxtoken/api/v1/token`
 
 4. Use the generated token to access service through knox as shown below
 
