@@ -151,3 +151,5 @@
  `curl -ivk -H "Authorization: Bearer <token string>" https://<knox host>:8443/gateway/<topology name>/<service>`
 
 Ex:`curl -ivk -H "Authorization: Bearer <token string>" https://<knox host>:8443/gateway/jwt/webhdfs/v1/tmp?op=LISTSTATUS`
+
+Ref: https://docs.cloudera.com/HDPDocuments/HDP2/HDP-2.6.5/bk_security/content/knox_token_service.html
