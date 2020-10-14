@@ -2,7 +2,7 @@
 
 
 cdp-dc knox kerberos topology using CM
-```
+```bash
 Goto -> CM -> Knox -> Knox Gateway Advanced Configuration Snippet (Safety Valve) for conf/cdp-resources.xml
 
 
