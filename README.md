@@ -14,3 +14,13 @@ value = role=authentication#authentication.name=HadoopAuth#authentication.param.
 name = kerberos1
 value = providerConfigRef=kerberos#discoveryType=ClouderaManager#discoveryAddress=https://knox-workshop-1.knox-workshop.root.hwx.site:7183/#cluster=Cluster 1#discoveryUser=admin#discoveryPasswordAlias=admin#WEBHDFS
 ```
+
+##### sso provider
+```
+Goto -> CM -> Knox -> Knox Gateway Advanced Configuration Snippet (Safety Valve) for conf/cdp-resources.xml
+
+name = providerConfigs:sso
+
+value = role=federation#federation.name=SSOCookieProvider#federation.params.sso.authentication.provider.url=https://pbhagade-p1-2.pbhagade-p1.root.hwx.site:8443/gateway/knoxsso/api/v1/websso#role=identity-assertion#identity-assertion.name=HadoopGroupProvider#identity-assertion.enabled=true#identity-assertion.param.CENTRAL_GROUP_CONFIG_PREFIX=gateway.group.config#role=authorization#authorization.name=XASecurePDPKnox#authorization.enabled=true
+
+```
